@@ -1,5 +1,4 @@
 import { useState, ChangeEvent } from 'react';
-import '../styles/globals.css';
 import styles from '../styles/Home.module.css';
 
 export default function Store() {
