@@ -1,3 +1,4 @@
+import '../styles/globals.css'; // Add this if you see a globals.css file
 import { useState, ChangeEvent } from 'react';
 
 // You might need to import your global CSS or layout components here
