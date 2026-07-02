@@ -15,19 +15,39 @@ export default function Store() {
   };
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
-      <h1>Mukta Variety Store</h1>
-      <div style={{ marginBottom: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <input placeholder="Enter Name" style={{ padding: '10px', fontSize: '18px', border: '2px solid #000', borderRadius: '5px' }} onChange={(e) => setName(e.target.value)} />
-        <input placeholder="Enter Address" style={{ padding: '10px', fontSize: '18px', border: '2px solid #000', borderRadius: '5px' }} onChange={(e) => setAddress(e.target.value)} />
+    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif', maxWidth: '600px', margin: '0 auto' }}>
+      <h1 style={{ color: '#008080' }}>Mukta Variety Store</h1>
+      <p>Fast Food Raw Material, Delivered Fresh</p>
+      
+      <div style={{ marginBottom: '20px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+        <input 
+          placeholder="Enter Name" 
+          style={{ padding: '15px', fontSize: '16px', border: '2px solid #008080', borderRadius: '8px', width: '100%' }} 
+          onChange={(e) => setName(e.target.value)} 
+        />
+        <input 
+          placeholder="Enter Address" 
+          style={{ padding: '15px', fontSize: '16px', border: '2px solid #008080', borderRadius: '8px', width: '100%' }} 
+          onChange={(e) => setAddress(e.target.value)} 
+        />
       </div>
-      {products.map(p => (
-        <div key={p.id} style={{ marginBottom: '5px' }}>{p.name} - ₹{p.price}</div>
-      ))}
-      <button onClick={handlePlaceOrder} style={{ marginTop: '20px', padding: '10px 20px', fontSize: '16px', backgroundColor: '#25D366', color: 'white', border: 'none', borderRadius: '5px' }}>
+
+      <div style={{ marginBottom: '20px' }}>
+        {products.map(p => (
+          <div key={p.id} style={{ marginBottom: '10px', padding: '10px', borderBottom: '1px solid #ddd' }}>
+            {p.name} - ₹{p.price}
+          </div>
+        ))}
+      </div>
+
+      <button 
+        onClick={handlePlaceOrder} 
+        style={{ width: '100%', padding: '15px', fontSize: '18px', backgroundColor: '#25D366', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer' }}
+      >
         Place Order
       </button>
     </div>
   );
 }
+
 
