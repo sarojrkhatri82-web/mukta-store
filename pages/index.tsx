@@ -23,7 +23,22 @@ export default function Store() {
           <p>Fast Food Raw Material, Delivered Fresh</p>
         </div>
 
-        <div style={{ width: '100%', marginTop: '20px' }}>
+        {/* Product List Section */}
+        <div style={{ width: '100%', marginTop: '30px' }}>
+          {products.map(p => (
+            <div key={p.id} style={{ display: 'flex', alignItems: 'center', gap: '15px', padding: '15px', borderBottom: '1px solid #ddd' }}>
+              {/* Ensure image path matches your public folder structure */}
+              <img src={`/products/${p.id}.jpg`} alt={p.name} style={{ width: '80px', height: '80px', objectFit: 'cover', borderRadius: '8px' }} />
+              <div>
+                <h3 style={{ margin: '0 0 5px 0' }}>{p.name}</h3>
+                <p style={{ margin: 0, fontWeight: 'bold' }}>₹{p.price}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Input Fields */}
+        <div style={{ width: '100%', marginTop: '30px' }}>
           <input 
             placeholder="Enter Name" 
             style={{ width: '100%', padding: '12px', marginBottom: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
@@ -34,22 +49,13 @@ export default function Store() {
             style={{ width: '100%', padding: '12px', marginBottom: '20px', borderRadius: '8px', border: '1px solid #ccc' }}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setAddress(e.target.value)} 
           />
+          <button 
+            onClick={handlePlaceOrder} 
+            style={{ width: '100%', padding: '15px', backgroundColor: '#25D366', color: '#fff', border: 'none', borderRadius: '8px', cursor: 'pointer', fontSize: '16px' }}
+          >
+            Place Order
+          </button>
         </div>
-
-        <div style={{ width: '100%' }}>
-          {products.map(p => (
-            <div key={p.id} style={{ padding: '10px', borderBottom: '1px solid #eee' }}>
-              {p.name} - ₹{p.price}
-            </div>
-          ))}
-        </div>
-
-        <button 
-          onClick={handlePlaceOrder} 
-          style={{ width: '100%', padding: '15px', marginTop: '20px', backgroundColor: '#25D366', color: '#fff', border: 'none', borderRadius: '8px', cursor: 'pointer', fontSize: '16px' }}
-        >
-          Place Order
-        </button>
       </main>
     </div>
   );
