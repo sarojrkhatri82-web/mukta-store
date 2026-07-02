@@ -1,5 +1,8 @@
 import { useState, ChangeEvent } from 'react';
 
+// You might need to import your global CSS or layout components here
+// Example: import '../styles/globals.css'; 
+
 export default function Store() {
   const [name, setName] = useState<string>('');
   const [address, setAddress] = useState<string>('');
@@ -15,37 +18,47 @@ export default function Store() {
   };
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif', maxWidth: '600px', margin: '0 auto' }}>
-      <h1 style={{ color: '#008080' }}>Mukta Variety Store</h1>
-      <p>Fast Food Raw Material, Delivered Fresh</p>
-      
-      <div style={{ marginBottom: '20px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
+    <div className="container">
+      {/* Restore your original header section here */}
+      <header>
+        <h1>Mukta Variety Store</h1>
+        <p>Fast Food Raw Material, Delivered Fresh</p>
+      </header>
+
+      {/* Your new ordering section */}
+      <section className="order-section">
         <input 
           placeholder="Enter Name" 
-          style={{ padding: '15px', fontSize: '16px', border: '2px solid #008080', borderRadius: '8px', width: '100%' }} 
+          className="input-field"
           onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)} 
         />
         <input 
           placeholder="Enter Address" 
-          style={{ padding: '15px', fontSize: '16px', border: '2px solid #008080', borderRadius: '8px', width: '100%' }} 
+          className="input-field"
           onChange={(e: ChangeEvent<HTMLInputElement>) => setAddress(e.target.value)} 
         />
-      </div>
+      </section>
 
-      <div style={{ marginBottom: '20px' }}>
+      {/* Your original product list section */}
+      <main>
         {products.map(p => (
-          <div key={p.id} style={{ marginBottom: '10px', padding: '10px', borderBottom: '1px solid #ddd' }}>
+          <div key={p.id} className="product-item">
             {p.name} - ₹{p.price}
           </div>
         ))}
-      </div>
+      </main>
 
-      <button 
-        onClick={handlePlaceOrder} 
-        style={{ width: '100%', padding: '15px', fontSize: '18px', backgroundColor: '#25D366', color: 'white', border: 'none', borderRadius: '8px', cursor: 'pointer' }}
-      >
+      <button onClick={handlePlaceOrder} className="order-button">
         Place Order
       </button>
+      
+      {/* Optional: Add custom CSS inside a style tag if external styles aren't loading */}
+      <style jsx>{`
+        .container { padding: 20px; font-family: sans-serif; }
+        .input-field { display: block; width: 100%; margin-bottom: 10px; padding: 10px; border: 1px solid #ccc; }
+        .product-item { margin-bottom: 10px; }
+        .order-button { width: 100%; padding: 15px; background: #25D366; color: white; border: none; }
+      `}</style>
     </div>
   );
 }
