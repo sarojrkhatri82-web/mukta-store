@@ -17,39 +17,41 @@ export default function Store() {
   };
 
   return (
-    <div className={styles.container}>
-      <header className={styles.header}>
-        <h1>Mukta Variety Store</h1>
-        <p>Fast Food Raw Material, Delivered Fresh</p>
-      </header>
+    <div className={styles.page}>
+      <main className={styles.main}>
+        <div className={styles.intro}>
+          <h1>Mukta Variety Store</h1>
+          <p>Fast Food Raw Material, Delivered Fresh</p>
+        </div>
 
-      <div className={styles.main}>
-        <div style={{ marginBottom: '20px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <div style={{ width: '100%', marginTop: '20px' }}>
           <input 
             placeholder="Enter Name" 
-            style={{ padding: '12px', borderRadius: '4px', border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: '12px', marginBottom: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)} 
           />
           <input 
             placeholder="Enter Address" 
-            style={{ padding: '12px', borderRadius: '4px', border: '1px solid #ccc' }}
+            style={{ width: '100%', padding: '12px', marginBottom: '20px', borderRadius: '8px', border: '1px solid #ccc' }}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setAddress(e.target.value)} 
           />
         </div>
 
-        {products.map(p => (
-          <div key={p.id} className={styles.card}>
-            {p.name} - ₹{p.price}
-          </div>
-        ))}
+        <div style={{ width: '100%' }}>
+          {products.map(p => (
+            <div key={p.id} style={{ padding: '10px', borderBottom: '1px solid #eee' }}>
+              {p.name} - ₹{p.price}
+            </div>
+          ))}
+        </div>
 
         <button 
           onClick={handlePlaceOrder} 
-          style={{ width: '100%', padding: '15px', marginTop: '20px', backgroundColor: '#25D366', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}
+          style={{ width: '100%', padding: '15px', marginTop: '20px', backgroundColor: '#25D366', color: '#fff', border: 'none', borderRadius: '8px', cursor: 'pointer', fontSize: '16px' }}
         >
           Place Order
         </button>
-      </div>
+      </main>
     </div>
   );
 }
